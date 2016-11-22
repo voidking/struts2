@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.multipart.saveDir" value="/tmp"/>
+    <package name="default"  extends="struts-default">
+    
+    	<interceptors>
+    		<interceptor name="myInterceptor" class="com.voidking.struts2.tool.MyInterceptor"></interceptor>
+    	</interceptors>
+    	<default-interceptor-ref name=""></default-interceptor-ref>
+    	
+        <default-action-ref name="index" />
+        <action name="struts" class="com.voidking.struts2.action.StrutsAction">
+            <result name="success">/welcome.jsp</result>
+            <result name="error">/hello.jsp</result>
+            <result name="input">/hello.jsp</result>
+            
+            <!-- 拦截配置在result后面 -->
+            <!-- 使用系统默认拦截器栈 -->
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <!-- 配置拦截器 -->
+            <interceptor-ref name="myInterceptor"></interceptor-ref>
+            
+        </action>
+        
+        <action name="upload" class="com.voidking.struts2.action.UploadAction">
+        	<result name="success">/uploadsuccess.jsp</result>
+        	<interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        
+        <action name="upload2" class="com.voidking.struts2.action.Upload2Action">
+        	<result name="success">/uploadsuccess.jsp</result>
+        	<interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        
+        <action name="save" class="com.voidking.struts2.action.SaveAction">
+        	<result name="success">/addsuccess.jsp</result>
+        	<result name="error">/stu.jsp</result>
+        	<interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+    </package>
+</struts>

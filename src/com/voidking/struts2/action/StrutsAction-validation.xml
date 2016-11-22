@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+        "-//OpenSymphony Group//XWork Validator Config 1.0//EN"
+        "D:\jar\struts2\xwork-validator-1.0.dtd">
+<validators>
+<!--需要校验的字段的字段名-->
+	<field name="name">
+		<field-validator type="requiredstring">
+			<!--去空格-->
+			<param name="trim">true</param>
+			<!--错误提示信息-->
+			<message>姓名是必须的</message>
+		</field-validator>
+	</field>
+</validators>
